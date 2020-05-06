@@ -1,0 +1,70 @@
+{
+  "name": "Player",
+  "plural": "Players",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "code": {
+      "type": "string",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "lastname": {
+      "type": "string",
+      "required": true
+    },
+    "phone": {
+      "type": "string",
+      "required": true
+    },
+    "age": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "string",
+      "required": true
+    },
+    "image": {
+      "type": "string",
+      "required": false
+    },
+    "weigth": {
+      "type": "string",
+      "required": true
+    },
+    "height": {
+      "type": "string",
+      "required": true
+    },
+    "titles": {
+      "type": "string",
+      "required": false
+    },
+    "strengths": {
+      "type": "string",
+      "required": false
+    },
+    "link": {
+      "type": "string",
+      "required": false
+    },
+    "rol": {
+      "type": "string",
+      "required": false
+    }
+    
+    
+    
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

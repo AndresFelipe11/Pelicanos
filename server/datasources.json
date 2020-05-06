@@ -1,0 +1,29 @@
+{
+  "db": {
+    "host": "localhost",
+    "port": 27017,
+    "url": "mongodb://localhost:27017/pelicanosMongoDB",
+    "database": "pelicanosMongoDB",
+    "password": "",
+    "name": "db",
+    "user": "",
+    "useNewUrlParser": true,
+    "connector": "mongodb"
+  },
+  "Email":{
+    "name":"Email",
+    "connector":"mail",
+    "transports":[
+      {
+        "type":"SMTP",
+        "host":"smtp.gmail.com",
+        "secure":true,
+        "port":465,
+        "auth":{
+          "users":"prueba.programacion.web@gmail.com",
+          "pass":"test-password-123"
+        }
+      }
+    ]
+  }
+}

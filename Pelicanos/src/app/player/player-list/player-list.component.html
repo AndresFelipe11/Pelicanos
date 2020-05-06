@@ -1,0 +1,113 @@
+<br/>
+<a class="waves-effect waves-light btn-small green" href="/player/creator">
+    <i class="material-icons right">add</i>Añadir nuevo jugador</a>
+<br/>
+<table>
+    <thead>
+        <tr>
+            <th>
+                Foto
+            </th>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Apellido
+            </th>
+            <th>
+                Cedula
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Rol
+            </th>
+            <th>
+                Telefono
+            </th>
+            <th>
+                Edad
+            </th>
+            <th>
+                Peso
+            </th>
+            <th>
+                Estatura
+            </th>
+            <th>
+                Titulos
+            </th>
+            <th>
+                Fortalezas
+            </th>
+            <th>
+                Link
+            </th>
+
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of PlayerList">
+            <td>
+                <img class="activator" src="{{p.image}}">
+            </td>
+            <td>
+                {{p.name}}
+            </td>
+            <td>
+                {{p.lastname}}
+            </td>
+            <td>
+                {{p.code}}
+            </td>
+            <td>
+                {{p.email}}
+            </td>
+            <td>
+                {{p.rol}}
+            </td>
+            <td>
+                {{p.phone}}
+            </td>
+            <td>
+                {{p.age}}
+            </td>
+            <td>
+                {{p.weigth}}
+            </td>
+            <td>
+                {{p.heigth}}
+            </td>
+            <td>
+                {{p.titles}}
+            </td>
+            <td>
+                {{p.strengths}}
+            </td>
+            <td>
+                {{p.link}}
+            </td>
+            <td>
+                <a class="waves-effect waves-light btn-small blue" href="/player/editor/{{p.id}}">
+                    <i class="material-icons right">edit</i>Editar
+                    </a>
+            </td>
+            <td>
+                <a *ngIf="!showConfirmationButtons; else deleteConfirmationTemplate" (click)="ChangeConfirmationButtons(p.id)" class="waves-effect waves-light btn-small red">
+                    <i class="material-icons right">delete</i>Eliminar</a>
+                   <ng-template #deleteConfirmationTemplate>
+                    <div *ngIf="idToShowButtons == p.id">
+                        <a class="waves-effect waves-light btn-small red" (click)="deletePlayer(p.id)">
+                            <i class="material-icons right">delete</i>Eliminar</a>&nbsp;
+                            <a class="waves-effect waves-light btn-small green" (click)="ChangeConfirmationButtons('')">
+                                <i class="material-icons right">cancel</i>Cancelar</a>
+                    </div>
+                   </ng-template>
+            </td>
+        </tr>
+    </tbody>
+</table>

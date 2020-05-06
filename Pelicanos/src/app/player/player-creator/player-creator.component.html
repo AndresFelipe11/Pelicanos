@@ -1,0 +1,82 @@
+<form [formGrop]="playerFormGroup" (ngSubmit)="saveNewPlayer()">
+    <div class="row">
+        <div class="row">
+            <div class="input-fiel col s4">
+                <input formControlName="name" id="name" type="text" class="validate">
+                <label for="name">Nombre</label>
+                <div class="errorContainer" *ngIf="(name.touched || name.dirty) && name.invalid">
+                    <div class="card-panel green">
+                        Este campo es requerido!!
+                    </div>
+                    <div class="card-panel green">
+                        Este campo como minimo debe tener 3 caracteres de longitud!!
+                    </div>
+                    <div class="card-panel green">
+                        Este campo como maximo debe tener 4 caracteres de longitud!!
+                    </div>
+                </div>
+            </div>
+            <div class="input-fiel col s4">
+                <input formControlName="lastname" id="lastname" type="text" class="validate">
+                <label for="lastname">Apellido</label>
+            </div>
+            <div class="input-fiel col s4">
+                <input formControlName="code" id="code" type="text" class="validate">
+                <label for="code">Cedula</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-fiel col s4">
+                <input formControlName="email" id="email" type="text" class="validate">
+                <label for="email">Email</label>
+            </div>
+            <div class="input-fiel col s4">
+                <input formControlName="rol" id="rol" type="text" class="validate">
+                <label for="rol">Rol</label>
+            </div>
+            <div class="input-fiel col s4">
+                <input formControlName="phone" id="phone" type="text" class="validate">
+                <label for="phone">Telefono</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-fiel col s3">
+                <input formControlName="age" id="age" type="text" class="validate">
+                <label for="age">Edad</label>
+            </div>
+            <div class="input-fiel col s3">
+                <input formControlName="weigth" id="weigth" type="text" class="validate">
+                <label for="weigth">Peso</label>
+            </div>
+            <div class="input-fiel col s3">
+                <input formControlName="height" id="height" type="text" class="validate">
+                <label for="height">Estatura</label>
+            </div>
+            <div class="input-fiel col s3">
+                <input [(ngModel)]="titles" id="titles" type="text" class="validate">
+                <label for="titles">Titulos deportivos</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-fiel col s4">
+                <input [(ngModel)]="strengths" id="strengths" type="text" class="validate">
+                <label for="strengths">Fortalezas</label>
+            </div>
+            <div class="input-fiel col s4">
+                <input [(ngModel)]="link" id="link" type="text" class="validate">
+                <label for="link">Red Social(Link)</label>
+            </div>
+            <div class="input-fiel col s4">
+                <input [(ngModel)]="image" id="image" type="text" class="validate">
+                <label for="image">Foto (link)</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <button class="waves-effect waves-ligth btn green" type="submit">
+                    <i class="material-icons right">save</i>
+                    Guardar</button>
+            </div>
+        </div>
+    </div>
+</form>

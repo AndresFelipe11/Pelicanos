@@ -1,0 +1,112 @@
+import { Component, OnInit } from '@angular/core';
+import { PlayerModel } from 'src/app/models/player.model';
+import { PlayerService } from '../player.service';
+import { Router } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+
+@Component({
+  selector: 'app-player-creator',
+  templateUrl: './player-creator.component.html',
+  styleUrls: ['./player-creator.component.css']
+})
+export class PlayerCreatorComponent implements OnInit {
+
+  constructor(private plyService: PlayerService, private router: Router) {
+    this.playerFormGroup=this.formGroupCreator();
+   }
+
+  playerFormGroup: FormGroup;
+
+  formGroupCreator():FormGroup{
+   return new FormGroup({
+   code:new FormControl('',[Validators.required,Validators.minLength(8),Validators.maxLength(12)]),
+    name:new FormControl('',[Validators.required,Validators.minLength(4),Validators.maxLength(25)]),
+    lastname:new FormControl('',[Validators.required,Validators.minLength(4),Validators.maxLength(25)]),
+    phone:new FormControl('',[Validators.required,Validators.minLength(5),Validators.maxLength(14)]),
+    age:new FormControl('',[Validators.required,Validators.minLength(1),Validators.maxLength(3)]),
+    email:new FormControl('',[Validators.required,Validators.minLength(4),Validators.maxLength(35)]),
+    image:new FormControl(''),
+    weigth:new FormControl('',[Validators.required,Validators.minLength(1),Validators.maxLength(3)]),
+    height:new FormControl('',[Validators.required,Validators.minLength(1),Validators.maxLength(3)]),
+    titles:new FormControl(''),
+    strengths:new FormControl(''),
+    link:new FormControl(''),
+    rol:new FormControl(''),
+
+  });
+  }
+  
+
+//   player: PlayerModel={
+//     id: null,
+//     code:null,
+//     name:null,
+//     lastname:null,
+//     phone:null,
+//     age:null,
+//     email:null,
+//     image:null,
+//     weigth:null,
+//     height:null,
+//     titles:null,
+//     strengths:null,
+//     link:null,
+//     rol:null,
+//  }
+
+
+get code(){
+  return this.playerFormGroup.get('code');
+}
+get name(){
+  return this.playerFormGroup.get('name');
+}
+get lastname(){
+  return this.playerFormGroup.get('lastname');
+}
+get phone(){
+  return this.playerFormGroup.get('phone');
+}
+get age(){
+  return this.playerFormGroup.get('age');
+}
+get email(){
+  return this.playerFormGroup.get('email');
+}
+get image(){
+  return this.playerFormGroup.get('image');
+}
+get weigth(){
+  return this.playerFormGroup.get('weigth');
+}
+get heigth(){
+  return this.playerFormGroup.get('heigth');
+}
+get titles(){
+  return this.playerFormGroup.get('titles');
+}
+get strengths(){
+  return this.playerFormGroup.get('strengths');
+}
+get link(){
+  return this.playerFormGroup.get('link');
+}
+get rol(){
+  return this.playerFormGroup.get('rol');
+}
+
+  ngOnInit() {
+  }
+
+  saveNewPlayer():void{
+
+    console.log("saved");
+
+    // this.plyService.saveNewPlayer(this.player).subscribe(item => {
+    //   alert("El jugador a sido guardado exitosamente!!!");
+    //   this.router.navigate(["/player/view"]);
+
+    // });
+  }
+
+}
