@@ -14,13 +14,19 @@ export class UserService {
 
   userInfo = new BehaviorSubject<UserModel>(new UserModel());
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    this.verifyUserInSession();
+  }  
 
-  tokenId: string = '';
+  verifyUserInSession() {
+    let session = localStorage.getItem("activeUser");
+    if(session != undefined){
+      this.userInfo.next(JSON.parse(session));
+    }
+  }
 
-  saveLogginInfo(user: UserModel){
-    user.isLogged=true;
-    this.getUserInformation
+  getUserInfo() {
+    return this.userInfo.asObservable();
   }
 
   loginUser(email: string, password: string): Observable<UserModel> {
@@ -36,18 +42,25 @@ export class UserService {
         })
       });
   }
-  isActiveSession(){
-    //return this.userInfo.getValue().isLogged;
+
+ saveUserInformation(user: UserModel): void {
+   user.isLogged=true;
+   this.userInfo.next(user);
+    localStorage.setItem("userInfo", JSON.stringify(user));
   }
 
-  getUserInfo(){
-    return this.userInfo.asObservable;
+  isActiveSession(){
+   return this.userInfo.getValue().isLogged;
   }
+
+   tokenId: string = '';
+
 
   logoutUser(){
     
     localStorage.removeItem("userInfo");
     localStorage.removeItem("userTk");
+    this.userInfo.next(new UserModel());
   }
 
   saveToken(token) {
@@ -58,9 +71,7 @@ export class UserService {
     return localStorage.getItem("userTk");
   }
 
-  saveUserInformation(user: UserModel): void {
-    localStorage.setItem("userInfo", JSON.stringify(user));
-  }
+ 
 
   getUserInformation() {
     let userInfo = localStorage.getItem("userInfo");
@@ -69,6 +80,17 @@ export class UserService {
     }
     return (JSON.parse(userInfo));
   }
+
+
+
+
+
+
+
+
+
+
+
 
 
 }

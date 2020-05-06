@@ -11,30 +11,31 @@ import { Subscription } from 'rxjs';
 })
 export class HeaderComponent implements OnInit {
 
-
+  userInfo: UserModel;
+  userLogged:boolean = false;
+  userName: String;
+  CompleteName: string='';
   subscription:Subscription;
 
   constructor(private userService: UserService) { }
   
-  userInfo: UserModel;
-  userLogged: boolean=false;
-  CompleteName: string='';
-
-
-/*
-  veryfyUserSession(){
-    this.subscription= this.userService.getUserInfo().subscribe(user=>{
-      this.userInfo=user;
-      this.userLogged=user.islogged;
-      this.CompleteName=user.
-    })
-    }
-    */
   ngOnInit() {
+    this.verifyUserSession();
     this.showMenu();
   }
 
+  verifyUserSession() {
+    this.subscription = this.userService.getUserInfo().subscribe(user => {
+      this.userInfo = user;
+      this.updateInfo();
+    });
+  }
 
+  updateInfo(){
+    let msg = "In session: ";
+    this.userLogged = this.userInfo.isLogged;
+    this.userName = `${msg} ${this.userInfo.realm}`;
+  }
 
   showMenu():void{
     let userInfo = this.userService.getUserInformation();

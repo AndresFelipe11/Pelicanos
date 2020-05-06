@@ -1,32 +1,61 @@
-<div class="row center">
-    <div class="z-depth-3 y-depth-3 x-depth-3 grey green-text lighten-4 row"
-        style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px; margin-top: 100px;">
-        <div class="section">
-            <strong>User Login Form</strong>
-        </div>
-
-        <div class="section"><i class="mdi-alert-error red-text"></i></div>
-
-
-        <div class='row'>
-            <div class='input-field col s12'>
-                <input [(ngModel)]="email" class='validate' type="text" name='email' id='email' required />
-                <label for='email'>Usuario</label>
+<div id="login-page" class="row">
+    <div class="col s12 z-depth-6 card-panel">
+        <form [formGroup]="fgValidation" (ngSubmit)="loginEvent()" class="login-form">
+            <div class="row">
             </div>
-        </div>
-        <div class='row'>
-            <div class='input-field col m12'>
-                <input [(ngModel)]="password" class='validate' type='password' name='password' id='password' required />
-                <label for='password'>Contraseña</label>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">mail_outline</i>
+                    <input class="validate" formControlName="username" id="username" type="email">
+                    <label for="username" data-error="wrong" data-success="right">Username</label>
+                    <div class="warning-validation"
+                        *ngIf="fg.username.errors && (fg.username.dirty || fg.username.touched)">
+                        <strong *ngIf="fg.username.errors.required">
+                            Username is required!<br />
+                        </strong>
+                        <strong *ngIf="fg.username.errors.minlength">
+                            Username must be at least 5 characters long!<br />
+                        </strong>
+                        <strong *ngIf="fg.username.errors.maxlength">
+                            Username must be up to 40 characters long!<br />
+                        </strong>
+                        <strong *ngIf="fg.username.errors.email">
+                            Username must be an email!
+                        </strong>
+                    </div>
+                </div>
             </div>
-            <label>
-                <a><b>¿Olvido su contraseña?</b></a>
-            </label>
-        </div>
-        <br />
-        <div class='row center'>
-            <button (click)="onLoginBtnClick()" name='btn_login'
-                class='col  s6 btn btn-small blue white-text  waves-effect z-depth-1 y-depth-1'>Iniciar Sesión</button>
-        </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">lock_outline</i>
+                    <input id="password" formControlName="password" type="password">
+                    <label for="password">Password</label>
+                    <div class="warning-validation"
+                        *ngIf="fg.password.errors && (fg.password.dirty || fg.password.touched)">
+                        <strong *ngIf="fg.password.errors.required">
+                            Password is required!<br />
+                        </strong>
+                        <strong *ngIf="fg.password.errors.minlength">
+                            Password must be at least 10 characters long!<br />
+                        </strong>
+                        <strong *ngIf="fg.password.errors.maxlength">
+                            Password must be up to 15 characters long!
+                        </strong>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <button [disabled]="fg.username.errors || fg.password.errors"
+                        class="btn waves-effect waves-light blue col s12" type="submit">Login
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6 m6 l6">
+                    <p class="margin right-align medium-small"><a href="#">Forgot password?</a></p>
+                </div>
+            </div>
+        </form>
     </div>
 </div>

@@ -1,13 +1,13 @@
-<nav class="blue">
-    <div class="nav-wrapper">
+<nav>
+    <strong *ngIf="userLogged"></strong>
+    <div class="nav-wrapper blue">
         <a routerLink="/home" class="brand-logo center">Pelicanos</a>
         <a routerLink="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="left hide-on-med-and-down">
             <li><a routerLink="/player/view">Players</a></li>
             <li *ngIf="userLogged"><a routerLink="/player/list">Players list</a></li>
-            
         </ul>
-        <ul class="right hide-on-med-and-down">           
+        <ul class="right hide-on-med-and-down">
             <li *ngIf="!userLogged"><a routerLink="/user/login">Iniciar Sesión</a></li>
             <li *ngIf="!userLogged"><a routerLink="/user/register">Registrarse</a></li>
             <li *ngIf="userLogged"><a routerLink="/user/logout">Cerrar Sesión</a></li>
@@ -18,12 +18,9 @@
             </li>
         </ul>
     </div>
-    
 </nav>
 
-<ul class="sidenav" id="mobile-demo">
-    <li ><a routerLink="/player/list">Player</a></li>
-    <li><a routerLink="/user/loginl">login</a></li>
-    <li><a routerLink="/user/register">register</a></li>
+<ul class="sidenav" id="mobile-hotel">
+    <li><a *ngIf="!userLogged" routerLink="/security/login">Login</a></li>
+    <li><a *ngIf="userLogged" routerLink="/security/logout">Logout</a></li>
 </ul>
-
