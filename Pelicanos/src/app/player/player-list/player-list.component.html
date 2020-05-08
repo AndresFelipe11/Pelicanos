@@ -51,7 +51,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let p of PlayerList">
+        <tr *ngFor="let p of PlayerList | paginate: { itemsPerPage: 10, currentPage: p }">
             <td>
                 <img class="activator" src="{{p.image}}">
             </td>
@@ -111,3 +111,4 @@
         </tr>
     </tbody>
 </table>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

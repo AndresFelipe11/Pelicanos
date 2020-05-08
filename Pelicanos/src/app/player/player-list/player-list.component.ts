@@ -14,7 +14,7 @@ export class PlayerListComponent implements OnInit {
 
   constructor(private plrSevice: PlayerService, private route: Router) { }
   
-  
+  p: number = 1;  
   showConfirmationButtons: boolean=false
 
   idToShowButtons:string='';

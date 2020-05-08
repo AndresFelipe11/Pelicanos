@@ -8,13 +8,16 @@ import { PlayerCreatorComponent } from './player-creator/player-creator.componen
 import { PlayerEditorComponent } from './player-editor/player-editor.component';
 import { from } from 'rxjs';
 import { PlayerViewComponent } from './player-view/player-view.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+
 
 @NgModule({
   declarations: [PlayerListComponent, PlayerCreatorComponent, PlayerEditorComponent, PlayerViewComponent],
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   exports: [
     PlayerCreatorComponent,
