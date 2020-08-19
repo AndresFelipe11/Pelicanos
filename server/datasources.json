@@ -20,8 +20,8 @@
         "secure":true,
         "port":465,
         "auth":{
-          "users":"prueba.programacion.web@gmail.com",
-          "pass":"test-password-123"
+          "user":"pelicanosweb@gmail.com",
+          "pass":"Test-1234"
         }
       }
     ]
