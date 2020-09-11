@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PlayerModel } from 'src/app/models/player.model';
 import { PlayerService } from '../player.service';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder,ReactiveFormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-player-creator',
@@ -11,18 +12,20 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class PlayerCreatorComponent implements OnInit {
 
-  constructor(private plyService: PlayerService, private router: Router) {
+  playerFormGroup: FormGroup;
+
+  constructor(private fb: FormBuilder, private plyService: PlayerService, private router: Router) {
     this.playerFormGroup=this.formGroupCreator();
    }
 
-  playerFormGroup: FormGroup;
+  
 
   formGroupCreator():FormGroup{
    return new FormGroup({
    code:new FormControl('',[Validators.required,Validators.minLength(8),Validators.maxLength(12)]),
     name:new FormControl('',[Validators.required,Validators.minLength(4),Validators.maxLength(25)]),
     lastname:new FormControl('',[Validators.required,Validators.minLength(4),Validators.maxLength(25)]),
-    phone:new FormControl('',[Validators.required,Validators.minLength(5),Validators.maxLength(14)]),
+    phone:new FormControl('',[Validators.required,Validators.minLength(8),Validators.maxLength(14)]),
     age:new FormControl('',[Validators.required,Validators.minLength(1),Validators.maxLength(3)]),
     email:new FormControl('',[Validators.required,Validators.minLength(4),Validators.maxLength(35)]),
     image:new FormControl(''),
@@ -79,8 +82,8 @@ get image(){
 get weigth(){
   return this.playerFormGroup.get('weigth');
 }
-get heigth(){
-  return this.playerFormGroup.get('heigth');
+get height(){
+  return this.playerFormGroup.get('height');
 }
 get titles(){
   return this.playerFormGroup.get('titles');
@@ -100,13 +103,41 @@ get rol(){
 
   saveNewPlayer():void{
 
+    if(this.playerFormGroup.valid){
+      let player= this.buildPlayerData();
+        this.plyService.saveNewPlayer(player).subscribe(item => {
+       alert("El jugador a sido guardado exitosamente!!!");
+      this.router.navigate(["/player/view"]);
+
+     });
+
     console.log("saved");
+    }
+    else{
+      console.log("the form is invalid")
+    }
 
-    // this.plyService.saveNewPlayer(this.player).subscribe(item => {
-    //   alert("El jugador a sido guardado exitosamente!!!");
-    //   this.router.navigate(["/player/view"]);
+   
+  }
 
-    // });
+  buildPlayerData():PlayerModel{
+    let player: PlayerModel={
+      id:null,
+      code: this.code.value,
+      name: this.name.value,
+      lastname: this.lastname.value,
+      phone: this.phone.value,
+      age: this.age.value,
+      email: this.email.value,
+      image: this.image.value,
+      weigth: this.weigth.value,
+      height: this.height.value,
+      titles: this.titles.value,
+      strengths: this.strengths.value,
+      link: this.link.value,
+      rol: this.rol.value,
+    }
+    return player;
   }
 
 }

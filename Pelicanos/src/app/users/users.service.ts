@@ -43,6 +43,15 @@ export class UserService {
       });
   }
 
+  saveNewUser(user: UserModel):Observable<UserModel[]>{
+    return this.http.post<UserModel[]>(`${base_url}Users`, user,
+    {
+      headers: new HttpHeaders({
+        "content-type": "application/json"
+      })
+    });
+  }
+
  saveUserInformation(user: UserModel): void {
    user.isLogged=true;
    this.userInfo.next(user);
