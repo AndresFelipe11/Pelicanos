@@ -10,20 +10,26 @@
     "useNewUrlParser": true,
     "connector": "mongodb"
   },
-  "Email":{
-    "name":"Email",
-    "connector":"mail",
-    "transports":[
+  "Email": {
+    "name": "Email",
+    "connector": "mail",
+    "transports": [
       {
-        "type":"SMTP",
-        "host":"smtp.gmail.com",
-        "secure":true,
-        "port":465,
-        "auth":{
-          "user":"pelicanosweb@gmail.com",
-          "pass":"Test-1234"
+        "type": "SMTP",
+        "host": "smtp.gmail.com",
+        "secure": true,
+        "port": 465,
+        "auth": {
+          "user": "pelicanosweb@gmail.com",
+          "pass": "Test-1234"
         }
       }
     ]
+  },
+  "UploadFiles": {
+    "name": "UploadFiles",
+    "connector": "loopback-component-storage",
+    "provider": "fileSystem",
+    "root": "./server/files"
   }
 }

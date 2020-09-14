@@ -1,52 +1,95 @@
-<div class="container col s8">
-    <div class="row">
-      <nav>
-        <div class="nav-wrapper">
-          <div class="col s8">
-            <h3 class="brand-logo col s8">Please Register</h3>
-          </div>
+<form [formGroup]="userFormGroup" (ngSubmit)="saveNewUser()">
+  <div class="row">
+    <div class="input-field hoverable col s6">
+      <i class="material-icons prefix">contacts</i>
+      <input formControlName="realm" id="realm" type="text" class="validate">
+      <label for="realm">Nombres</label>
+      <div class="errorContainer" *ngIf="(realm.touched || realm.dirty) && realm.invalid">
+        <div class="card-panel white">
+          Este campo es requerido!!
         </div>
-      </nav>
-  
+        <div class="card-panel white">
+          Este campo como minimo debe tener 4 caracteres de longitud!!
+        </div>
+        <div class="card-panel white">
+          Este campo como maximo debe tener 25 caracteres de longitud!!
+        </div>
+      </div>
     </div>
-    <form class="col s14">
-      <div class="row">
-        <div class="input-field hoverable col s6">
-          <i class="material-icons prefix">contacts</i>
-          <input id="first_name" type="text" class="validate">
-          <label for="first_name">Nombres</label>
+    <div class="input-field hoverable col s6">
+      <i class="material-icons prefix">contacts</i>
+      <input formControlName="username" id="username" type="text" class="validate">
+      <label for="username">Apellidos</label>
+      <div class="errorContainer" *ngIf="(username.touched || username.dirty) && username.invalid">
+        <div class="card-panel white">
+          Este campo es requerido!!
         </div>
-        <div class="input-field hoverable col s6">
-          <i class="material-icons prefix">contacts</i>
-          <input id="last_name" type="text" class="validate">
-          <label for="last_name">Apellidos</label>
+        <div class="card-panel white">
+          Este campo como minimo debe tener 4 caracteres de longitud!!
         </div>
-      </div>
-      <div class="row">
-        <div class="input-field hoverable col s6">
-          <i class="material-icons prefix">account_circle</i>
-          <input id="username" type="text" class="validate">
-          <label for="username">Usuario</label>
-        </div>
-        <div class="input-field hoverable col s6">
-          <i class="material-icons prefix">email</i>
-          <input id="email" type="email" class="validate">
-          <label for="email">Email</label>
+        <div class="card-panel white">
+          Este campo como maximo debe tener 25 caracteres de longitud!!
         </div>
       </div>
-      <div class="row">
-        <div class="input-field hoverable col s6">
-          <i class="material-icons prefix">vpn_key</i>
-          <input id="password" type="password" class="validate">
-          <label for="password">Contraseña</label>
-        </div>
-        <div class="input-field hoverable col s6">
-          <i class="material-icons prefix">replay</i>
-          <input id="password2" type="password" class="validate">
-          <label for="password2">Confirmacion contraseña</label>
-        </div>
-      </div>
-      <a class="waves-effect waves-light btn right hoverable"><i class="large material-icons right">done</i>Registrarme</a>
-    </form>
-  
+    </div>
   </div>
+  <div class="row">
+    <div class="input-field hoverable col s6">
+      <i class="material-icons prefix">account_circle</i>
+      <input formControlName="id" id="id" type="text" class="validate">
+      <label for="id">Cedula</label>
+      <div class="errorContainer" *ngIf="(id.touched || id.dirty) && id.invalid">
+        <div class="card-panel white">
+          Este campo es requerido!!
+        </div>
+        <div class="card-panel white">
+          Este campo como minimo debe tener 4 caracteres de longitud!!
+        </div>
+        <div class="card-panel white">
+          Este campo como maximo debe tener 25 caracteres de longitud!!
+        </div>
+      </div>
+    </div>
+    <div class="input-field hoverable col s6">
+      <i class="material-icons prefix">email</i>
+      <input formControlName="email" id="email" type="email" class="validate">
+      <label for="email">Email</label>
+      <div class="errorContainer" *ngIf="(email.touched || email.dirty) && email.invalid">
+        <div class="card-panel white">
+          Este campo es requerido!!
+        </div>
+        <div class="card-panel white">
+          Este campo como minimo debe tener 4 caracteres de longitud!!
+        </div>
+        <div class="card-panel white">
+          Este campo como maximo debe tener 25 caracteres de longitud!!
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field hoverable col s6">
+      <i class="material-icons prefix">vpn_key</i>
+      <input formControlName="password" id="password" type="password" class="validate">
+      <label for="password">Contraseña</label>
+      <div class="errorContainer" *ngIf="(password.touched || password.dirty) && password.invalid">
+        <div class="card-panel white">
+          Este campo es requerido!!
+        </div>
+        <div class="card-panel white">
+          Este campo como minimo debe tener 4 caracteres de longitud!!
+        </div>
+        <div class="card-panel white">
+          Este campo como maximo debe tener 25 caracteres de longitud!!
+        </div>
+      </div>
+    </div>
+    <div class="input-field hoverable col s6">
+      <i class="material-icons prefix">replay</i>
+      <input formControlName="realm" id="password2" type="password" class="validate">
+      <label for="password2">Confirmacion contraseña</label>
+    </div>
+  </div>
+  <button class="waves-effect waves-ligth btn green" type="submit">
+    <i class="material-icons right">done</i>
+    registrarme</button>
